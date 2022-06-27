@@ -54,7 +54,16 @@ public class ArtsmiaController {
     @FXML
     void doCalcolaPercorso(ActionEvent event) {
     	txtResult.clear();
-    	txtResult.appendText("Calcola percorso");
+    	Integer id = Integer.parseInt(this.txtArtista.getText());
+    	if(this.model.isCorrect(id)) {
+    		//txtResult.appendText("Calcola percorso");
+			String result = this.model.cerca(id);
+			txtResult.appendText(result);
+    	}
+    	else {
+    		this.txtResult.setText("Inserire id valido!");
+    		return;
+    	}
     }
 
     @FXML
